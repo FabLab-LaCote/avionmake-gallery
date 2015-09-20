@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="" ng-app="avionmakeGallery">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>avion:make - lemanmake 2015</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+  </head>
+  <body ng-controller="MainController as main">
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <nav>
+      <h1>avion:make - lemanmake 2015</h1>
+      <h2>Créateurs</h2>
+      <div id="v">
+        <div id="map"></div>
+        <div class="col">
+          <div ng-repeat="c in main.c">{{c.key}} ({{c.value}})</div>
+        </div>
+        <div id="d" class="col">
+          <div ng-repeat="d in main.d">{{d.key}} ({{d.value}})</div>
+        </div>
+      </div>
+    </nav>
+    <h2>Avions</h2>
+    <div id="f">
+      <label><input type="radio" value="" ng-model="main.type"> Tous</label>
+      <label><input type="radio" value="plane1" ng-model="main.type"> Planeur</label>
+      <label><input type="radio" value="biplane1" ng-model="main.type"> Biplan</label>
+      <label><input type="radio" value="fighter1" ng-model="main.type"> Chasseur</label>
+    </div>
+    <div id="plane-container">
+      <div ng-repeat="plane in main.planes | filter: {type: main.type}" class="plane">
+        <a ng-href="http://www.fablab-lacote.ch/avionmake/#/v/{{plane._id}}" target="_blank">
+        <img ng-src="images/planes/thumb/{{plane._id}}-merged.pdf.jpg" alt="{{plane._id}}"/>
+        </a>
+      </div>
+    </div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdbNH1lufI16Fh6c6eiOHjvlT70ps4bLg&libraries=visualization">
+    </script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-47891505-2');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

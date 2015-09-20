@@ -1,0 +1,11 @@
+{
+  "name": "avionmake-gallery",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.6"
+  },
+  "devDependencies": {
+    "chai": "~3.3.0",
+    "mocha": "~2.3.2"
+  }
+}
